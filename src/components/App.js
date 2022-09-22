@@ -22,11 +22,19 @@ function App() {
       setTaskArray(newTasks);
     }
   }
+
+  // Add task to list on file submit
+  function onTaskFormSubmit({ category, text }) {
+    const newTask = {category, text};
+    const updatedTaskList = [...taskArray, newTask];
+    setTaskArray(updatedTaskList);
+  }
+
   return (
     <div className="App">
       <h2>My tasks</h2>
       <CategoryFilter categories={CATEGORIES} filterTasks={filterTasks}/>
-      <NewTaskForm />
+      <NewTaskForm categories={CATEGORIES} onTaskFormSubmit={onTaskFormSubmit}/>
       <TaskList tasks={taskArray}/>
     </div>
   );
