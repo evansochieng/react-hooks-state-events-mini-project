@@ -12,6 +12,12 @@ function App() {
   // Set state for tasks
   const [taskArray, setTaskArray] = useState(TASKS)
 
+  // Delete task
+  function removeTask(id) {
+    const remainingTasks = taskArray.filter((item) => item.id !== id)
+    setTaskArray(remainingTasks);
+  }
+
   // Change list of tasks depending on the category
   const filterTasks = (category) => {
     const tasksList = [...taskArray]
@@ -35,7 +41,7 @@ function App() {
       <h2>My tasks</h2>
       <CategoryFilter categories={CATEGORIES} filterTasks={filterTasks}/>
       <NewTaskForm categories={CATEGORIES} onTaskFormSubmit={onTaskFormSubmit}/>
-      <TaskList tasks={taskArray}/>
+      <TaskList tasks={taskArray} removeTask={removeTask}/>
     </div>
   );
 }
