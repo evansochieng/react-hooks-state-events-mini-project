@@ -12,7 +12,7 @@ function Task({ tasks }) {
   return (
     <>
     {/* Display all tasks in the app */}
-    {todo.map( (task) => {
+    {tasks.map( (task) => {
       const {text, category} = task;
       return (<div key={shortid.generate()} className="task">
         <div className="label">{category}</div>
