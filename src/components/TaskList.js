@@ -6,9 +6,11 @@ function TaskList({ tasks, removeTask }) {
   return (
     <div className="tasks">
       {/* display a list of tasks using Task component */}
-      <ul>
-        <Task tasks={tasks} removeTask={removeTask} />
-      </ul>
+      {tasks.map( (task) => {
+        const newId = shortid.generate();
+        task.id = newId;
+        return <Task key={newId} task={task} removeTask={removeTask}/>
+      })}
     </div>
   );
 }
